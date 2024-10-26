@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player Page</title>
+    <style>
+        body {
+            background-image: url('Backdrop.WEBP');
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .button {
+            display: block;
+            width: 300px;
+            margin: 15px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 10px;
+        }
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <a class="button" href="#" onclick="playAudio('Ep.1.mp3')">Click Here to Listen to Episode 1</a>
+    <a class="button" href="#" onclick="playAudio('Ep.2.mp3')">Click Here to Listen to Episode 2</a>
+    <a class="button" href="#" onclick="playAudio('Ep.3.mp3')">Click Here to Listen to Episode 3</a>
+    
+    <audio id="audio-player" controls></audio>
+    
+    <script>
+        function playAudio(file) {
+            var audio = document.getElementById('audio-player');
+            audio.src = file;
+            audio.play();
+        }
+    </script>
+</body>
+</html>
