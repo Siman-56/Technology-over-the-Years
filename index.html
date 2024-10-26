@@ -16,7 +16,6 @@
             font-family: Arial, sans-serif;
             color: white;
             text-align: center;
-            flex-direction: column;
         }
         .button {
             display: block;
@@ -32,36 +31,8 @@
         .button:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
-        .controls {
-            display: none; /* Hidden by default */
-            margin-top: 20px;
-            text-align: center;
-        }
-        #progress-bar {
-            width: 80%;
-            height: 10px;
-            background-color: #444;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-        #progress-bar div {
-            height: 100%;
-            background-color: #00faff;
-            width: 0%;
-        }
-        #pause-button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: rgba(255, 0, 0, 0.7);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-        }
-        #pause-button:hover {
-            background-color: rgba(255, 0, 0, 0.9);
+        audio {
+            display: none;
         }
     </style>
 </head>
@@ -70,46 +41,14 @@
     <a class="button" href="#" onclick="playAudio('Ep.2.mp3')">Click Here to Listen to Episode 2</a>
     <a class="button" href="#" onclick="playAudio('Ep.3.mp3')">Click Here to Listen to Episode 3</a>
     
-    <div class="controls" id="controls">
-        <button id="pause-button" onclick="pauseAudio()">Pause</button>
-        <div id="progress-bar"><div></div></div>
-    </div>
-    
     <audio id="audio-player" controls></audio>
     
     <script>
-        var audio = document.getElementById('audio-player');
-        var progressBar = document.getElementById('progress-bar').firstElementChild;
-        var controls = document.getElementById('controls');
-        var pauseButton = document.getElementById('pause-button');
-
         function playAudio(file) {
+            var audio = document.getElementById('audio-player');
             audio.src = file;
             audio.play();
-            controls.style.display = "block"; // Show controls when playing
-            pauseButton.innerText = "Pause";
-
-            // Update progress bar continuously
-            audio.ontimeupdate = function() {
-                var progress = (audio.currentTime / audio.duration) * 100;
-                progressBar.style.width = progress + "%";
-            };
         }
-
-        function pauseAudio() {
-            if (audio.paused) {
-                audio.play();
-                pauseButton.innerText = "Pause";
-            } else {
-                audio.pause();
-                pauseButton.innerText = "Play";
-            }
-        }
-
-        audio.onended = function() {
-            controls.style.display = "none"; // Hide controls when playback ends
-            progressBar.style.width = "0%"; // Reset progress bar
-        };
     </script>
 </body>
 </html>
